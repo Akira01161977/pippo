@@ -1,4 +1,4 @@
-package org.csanchez.selenium.example;
+package org.reply.selenium;
 
 import java.net.URL;
 
@@ -28,9 +28,9 @@ public class ExampleTest {
 
     @Before
     public void setUp() throws Exception {
-    	//System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
-    	//driver = new ChromeDriver();
-        DesiredCapabilities capabilities = new DesiredCapabilities(SELENIUM_BROWSER, "", Platform.ANY);
+    	System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
+    	driver = new ChromeDriver();
+/*        DesiredCapabilities capabilities = new DesiredCapabilities(SELENIUM_BROWSER, "", Platform.ANY);
         // Retry connecting
         WebDriverException ex = null;
         for (int i = 0; i < 10; i++) {
@@ -44,7 +44,7 @@ public class ExampleTest {
             }
         }
         throw ex;
-    	
+  */  	
     }
 
     
