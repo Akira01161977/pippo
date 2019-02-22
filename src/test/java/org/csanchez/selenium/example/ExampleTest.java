@@ -14,6 +14,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class ExampleTest {
 
@@ -41,44 +42,93 @@ public class ExampleTest {
         throw ex;
     }
 
-    @Test
-    public void test() throws Exception {
-        // And now use this to visit Google
-        driver.get("http://www.google.com");
-        // Alternatively the same thing can be done like this
-        // driver.navigate().to("http://www.google.com");
-
-        Thread.sleep(SLEEP);
-
-        // Find the text input element by its name
-        WebElement element = driver.findElement(By.name("q"));
-
-        // Enter something to search for
-        element.sendKeys("Cheese!");
-
-        Thread.sleep(SLEEP);
-
-        // Now submit the form. WebDriver will find the form for us from the element
-        element.submit();
-
-        // Check the title of the page
-        System.out.println("Page title is: " + driver.getTitle());
-
-        // Google's search is rendered dynamically with JavaScript.
-        // Wait for the page to load, timeout after 10 seconds
-        (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver d) {
-                return d.getTitle().toLowerCase().startsWith("cheese!");
-            }
-        });
-
-        Thread.sleep(SLEEP);
-
-        // Should see: "cheese! - Google Search"
-        System.out.println("Page title is: " + driver.getTitle());
-
+    @Test(priority=0)
+    public void openUrl() {
+  	driver.get("http://13.93.116.170:8080/login");
+  	String title = driver.getTitle();
+  	String page=driver.getPageSource();
+  	System.out.println(page);
+  	Assert.assertTrue(title.contains("Sign in [Jenkins]"));
     }
-
+    
+    @Test(priority=1)
+    public void Login() {
+  	  driver.findElement(By.name("j_username")).sendKeys("admin");
+    	  driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
+    	  try {
+  			Thread.sleep(1000);
+  		} catch (InterruptedException e) {
+  			// TODO Auto-generated catch block
+  			e.printStackTrace();
+  		}
+  	  
+  	  driver.findElement(By.name("Submit")).click();
+  	  
+  	  Assert.assertEquals("Cruscotto [Jenkins]",driver.getTitle());
+    }
+    
+    @Test(priority=2)
+    public void NewElement() {
+  	  try {
+  			Thread.sleep(1000);
+  		} catch (InterruptedException e) {
+  			// TODO Auto-generated catch block
+  			e.printStackTrace();
+  		}
+  	  driver.findElement(By.linkText("Nuovo Elemento")).click();
+  	  Assert.assertEquals("Nuovo Elemento [Jenkins]",driver.getTitle());
+  	  try {
+  			Thread.sleep(1000);
+  		} catch (InterruptedException e) {
+  			// TODO Auto-generated catch block
+  			e.printStackTrace();
+  		}
+  	  String jobName="TestAutomation";
+  	  driver.findElement(By.name("name")).sendKeys("TestAutomation");
+    	  try {
+  			Thread.sleep(1000);
+  		} catch (InterruptedException e) {
+  			// TODO Auto-generated catch block
+  			e.printStackTrace();
+  		}
+  	 
+  	  driver.findElement(By.className("org_jenkinsci_plugins_workflow_job_WorkflowJob")).click();
+  	  driver.findElement(By.id("ok-button")).click();
+  	  try {
+  			Thread.sleep(1000);
+  		} catch (InterruptedException e) {
+  			// TODO Auto-generated catch block
+  			e.printStackTrace();
+  		}	  
+  	  Assert.assertEquals(jobName+" Config [Jenkins]",driver.getTitle());
+  	  
+    }
+    
+    @Test(priority=3)
+    public void DeleteElement() {
+  	  String jobName="TestAutomation";
+  	  driver.findElement(By.linkText(jobName)).click();
+  	  Assert.assertEquals(jobName+" [Jenkins]",driver.getTitle());
+  	  driver.findElement(By.linkText("Elimina Pipeline")).click();
+  	  
+  	  	  try {
+  			Thread.sleep(2000);
+  		} catch (InterruptedException e) {
+  			// TODO Auto-generated catch block
+  			e.printStackTrace();
+  		}
+  	  
+  	  	driver.switchTo().alert().accept();
+  	  	try {
+  			Thread.sleep(2000);
+  		} catch (InterruptedException e) {
+  			// TODO Auto-generated catch block
+  			e.printStackTrace();
+  		}
+  	  
+  	  	  
+  			  
+    }
     @After
     public void tearDown() throws Exception {
         if (driver != null)
