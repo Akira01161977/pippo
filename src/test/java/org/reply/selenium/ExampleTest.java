@@ -30,8 +30,8 @@ public class ExampleTest {
     public void setUp() throws Exception {
     	//System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
     	//driver = new ChromeDriver();
-    	System.out.println("S");
-        DesiredCapabilities capabilities = new DesiredCapabilities(SELENIUM_BROWSER, "", Platform.ANY);
+    	
+    	DesiredCapabilities capabilities = new DesiredCapabilities(SELENIUM_BROWSER, "", Platform.ANY);
         // Retry connecting
         WebDriverException ex = null;
         for (int i = 0; i < 10; i++) {
@@ -63,9 +63,9 @@ public class ExampleTest {
     	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
     	driver.findElement(By.name("Submit")).click();
     	
-    	Assert.assertEquals("Dashboard1 [Jenkins]",driver.getTitle());
+    	Assert.assertEquals("Dashboard [Jenkins]",driver.getTitle());
     	
-        /**************************************/
+        /********************* Pippo *****************/
     	
     	
     
