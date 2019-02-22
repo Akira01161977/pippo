@@ -42,93 +42,43 @@ public class ExampleTest {
         throw ex;
     }
 
-    @Test(priority=0)
-    public void openUrl() {
-  	driver.get("http://13.93.116.170:8080/login");
-  	String title = driver.getTitle();
-  	String page=driver.getPageSource();
-  	System.out.println(page);
-  	Assert.assertTrue(title.contains("Sign in [Jenkins]"));
+    @Test
+    public void test() throws Exception {
+      
+    	/************ LOGIN TEST **************/
+    	driver.get("http://13.93.116.170:8080/login");
+        // Alternatively the same thing can be done like this
+        // driver.navigate().to("http://www.google.com");
+
+        Thread.sleep(SLEEP);
+
+        driver.findElement(By.name("j_username")).sendKeys("admin");
+    	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
+    	driver.findElement(By.name("Submit")).click();
+  	  
+        /**************************************/
+    	
+    	
+    	/************ Create New Job **************/
+    	
+    	driver.findElement(By.linkText("Nuovo Elemento")).click();
+    	String jobName="TestAutomation";
+   	  	driver.findElement(By.name("name")).sendKeys("TestAutomation");
+   	  	driver.findElement(By.className("org_jenkinsci_plugins_workflow_job_WorkflowJob")).click();
+   	  	driver.findElement(By.id("ok-button")).click();
+   	  	
+   	  	/******************************************/
+   	  	
+   	  	/**************** Delete Job ***************/
+   	  	driver.findElement(By.linkText(jobName)).click();
+   	  	driver.findElement(By.linkText("Elimina Pipeline")).click();
+   	  	driver.switchTo().alert().accept();
+	  
+   	  	/*******************************************/
+   	  	
+   	  	
     }
-    
-    @Test(priority=1)
-    public void Login() {
-  	  driver.findElement(By.name("j_username")).sendKeys("admin");
-    	  driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
-    	  try {
-  			Thread.sleep(1000);
-  		} catch (InterruptedException e) {
-  			// TODO Auto-generated catch block
-  			e.printStackTrace();
-  		}
-  	  
-  	  driver.findElement(By.name("Submit")).click();
-  	  
-  	  Assert.assertEquals("Cruscotto [Jenkins]",driver.getTitle());
-    }
-    
-    @Test(priority=2)
-    public void NewElement() {
-  	  try {
-  			Thread.sleep(1000);
-  		} catch (InterruptedException e) {
-  			// TODO Auto-generated catch block
-  			e.printStackTrace();
-  		}
-  	  driver.findElement(By.linkText("Nuovo Elemento")).click();
-  	  Assert.assertEquals("Nuovo Elemento [Jenkins]",driver.getTitle());
-  	  try {
-  			Thread.sleep(1000);
-  		} catch (InterruptedException e) {
-  			// TODO Auto-generated catch block
-  			e.printStackTrace();
-  		}
-  	  String jobName="TestAutomation";
-  	  driver.findElement(By.name("name")).sendKeys("TestAutomation");
-    	  try {
-  			Thread.sleep(1000);
-  		} catch (InterruptedException e) {
-  			// TODO Auto-generated catch block
-  			e.printStackTrace();
-  		}
-  	 
-  	  driver.findElement(By.className("org_jenkinsci_plugins_workflow_job_WorkflowJob")).click();
-  	  driver.findElement(By.id("ok-button")).click();
-  	  try {
-  			Thread.sleep(1000);
-  		} catch (InterruptedException e) {
-  			// TODO Auto-generated catch block
-  			e.printStackTrace();
-  		}	  
-  	  Assert.assertEquals(jobName+" Config [Jenkins]",driver.getTitle());
-  	  
-    }
-    
-    @Test(priority=3)
-    public void DeleteElement() {
-  	  String jobName="TestAutomation";
-  	  driver.findElement(By.linkText(jobName)).click();
-  	  Assert.assertEquals(jobName+" [Jenkins]",driver.getTitle());
-  	  driver.findElement(By.linkText("Elimina Pipeline")).click();
-  	  
-  	  	  try {
-  			Thread.sleep(2000);
-  		} catch (InterruptedException e) {
-  			// TODO Auto-generated catch block
-  			e.printStackTrace();
-  		}
-  	  
-  	  	driver.switchTo().alert().accept();
-  	  	try {
-  			Thread.sleep(2000);
-  		} catch (InterruptedException e) {
-  			// TODO Auto-generated catch block
-  			e.printStackTrace();
-  		}
-  	  
-  	  	  
-  			  
-    }
+
     @After
     public void tearDown() throws Exception {
         if (driver != null)
