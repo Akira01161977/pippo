@@ -56,12 +56,14 @@ public class ExampleTest {
         
         /**************************************/
     	
-    	Thread.sleep(1000);
+    	Thread.sleep(5000);
     	
     	/************ Create New Job **************/
     	System.out.println("New Element");
         
     	driver.findElement(By.linkText("Nuovo Elemento")).click();
+    	Thread.sleep(5000);
+    	
     	String jobName="TestAutomation";
    	  	driver.findElement(By.name("name")).sendKeys("TestAutomation");
    	  	driver.findElement(By.className("org_jenkinsci_plugins_workflow_job_WorkflowJob")).click();
@@ -69,13 +71,15 @@ public class ExampleTest {
    	  	System.out.println("New Element End");
      
    	  	/******************************************/
-   	  	Thread.sleep(1000);
+   	  	Thread.sleep(5000);
  	
    	  	/**************** Delete Job ***************/
    	  	System.out.println("New Element delete");
      
    	  	driver.findElement(By.linkText(jobName)).click();
    	  	driver.findElement(By.linkText("Elimina Pipeline")).click();
+   	  	Thread.sleep(5000);
+ 	
    	  	driver.switchTo().alert().accept();
    	  	System.out.println("New Element delete End");
      
