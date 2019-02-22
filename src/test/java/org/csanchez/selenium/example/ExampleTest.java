@@ -107,10 +107,10 @@ public class ExampleTest {
    	  	
    	  	driver.findElement(By.linkText(jobName)).click();
    	    Thread.sleep(5000);
-   	    System.out.println(driver.getPageSource());
+   	    
+   	  	driver.findElement(By.linkText("Delete Pipeline")).click();
+   	 System.out.println(driver.getPageSource());
 
-   	  	driver.findElement(By.linkText("delete Pipeline")).click();
-   	  	
    	  	driver.switchTo().alert().accept();
    	  	System.out.println("New Element delete End");
      
