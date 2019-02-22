@@ -71,7 +71,6 @@ public class ExampleTest {
    	  	
         /**************************************/
     	
-    	Thread.sleep(5000);
     	
     
    	  	
@@ -86,31 +85,25 @@ public class ExampleTest {
 
         Thread.sleep(SLEEP);
         System.out.println("Login");
-        System.out.println("step 1");
         System.out.println(driver.getTitle());
         driver.findElement(By.name("j_username")).sendKeys("admin");
     	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
     	driver.findElement(By.name("Submit")).click();
 
     	/************ Create New Job **************/
-    	System.out.println("New Element");
+    	System.out.println("New Item");
     	System.out.println("step 4");
-        
-    	System.out.println(driver.getPageSource());
-    	
-    	driver.findElement(By.linkText("New Item")).click();
+        driver.findElement(By.linkText("New Item")).click();
     	Thread.sleep(5000);
     	System.out.println(driver.getTitle());
-        
-    	Assert.assertEquals("New Element [Jenkins]",driver.getTitle());
-  	  
-    	driver.findElement(By.name("name")).sendKeys("TestAutomation");
+    	System.out.println(driver.getPageSource());
+        Assert.assertEquals("New Item [Jenkins]",driver.getTitle());
+  	  	driver.findElement(By.name("name")).sendKeys("TestAutomation");
    	  	driver.findElement(By.className("org_jenkinsci_plugins_workflow_job_WorkflowJob")).click();
    	  	driver.findElement(By.id("ok-button")).click();
    	  	System.out.println("New Element End");
         /******************************************/
-   	  	Thread.sleep(5000);
- 	
+   	  	
     }
     
     @Test
@@ -129,6 +122,7 @@ public class ExampleTest {
 
     	/**************** Delete Job ***************/
    	  	System.out.println("New Element delete");
+   	  	System.out.println(driver.getPageSource());
 
     	String jobName="TestAutomation";
    	  	
