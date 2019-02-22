@@ -5,7 +5,9 @@ import java.net.URL;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +16,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ExampleTest {
 
     private final static String SELENIUM_URL = System.getProperty("selenium.url", "http://localhost:4444/wd/hub");
@@ -41,6 +43,8 @@ public class ExampleTest {
         throw ex;
     }
 
+    
+    
     @Test
     public void Stage0_Login() throws Exception {
       
