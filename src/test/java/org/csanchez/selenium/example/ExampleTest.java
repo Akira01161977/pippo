@@ -48,29 +48,37 @@ public class ExampleTest {
         // driver.navigate().to("http://www.google.com");
 
         Thread.sleep(SLEEP);
-
+        System.out.println("Login");
         driver.findElement(By.name("j_username")).sendKeys("admin");
     	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
     	driver.findElement(By.name("Submit")).click();
-  	  
+    	System.out.println("Login OK");
+        
         /**************************************/
     	
+    	Thread.sleep(1000);
     	
     	/************ Create New Job **************/
-    	
+    	System.out.println("New Element");
+        
     	driver.findElement(By.linkText("Nuovo Elemento")).click();
     	String jobName="TestAutomation";
    	  	driver.findElement(By.name("name")).sendKeys("TestAutomation");
    	  	driver.findElement(By.className("org_jenkinsci_plugins_workflow_job_WorkflowJob")).click();
    	  	driver.findElement(By.id("ok-button")).click();
-   	  	
+   	  	System.out.println("New Element End");
+     
    	  	/******************************************/
-   	  	
+   	  	Thread.sleep(1000);
+ 	
    	  	/**************** Delete Job ***************/
+   	  	System.out.println("New Element delete");
+     
    	  	driver.findElement(By.linkText(jobName)).click();
    	  	driver.findElement(By.linkText("Elimina Pipeline")).click();
    	  	driver.switchTo().alert().accept();
-	  
+   	  	System.out.println("New Element delete End");
+     
    	  	/*******************************************/
    	  	
    	  	
