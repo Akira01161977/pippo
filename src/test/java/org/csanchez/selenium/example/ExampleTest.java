@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Assert;
 
 
 public class ExampleTest {
@@ -52,6 +53,7 @@ public class ExampleTest {
         driver.findElement(By.name("j_username")).sendKeys("admin");
     	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
     	driver.findElement(By.name("Submit")).click();
+    	Assert.assertEquals("Cruscotto [Jenkins]",driver.getTitle());
     	System.out.println("Login OK");
         
         /**************************************/
@@ -63,7 +65,8 @@ public class ExampleTest {
         
     	driver.findElement(By.linkText("Nuovo Elemento")).click();
     	Thread.sleep(5000);
-    	
+    	Assert.assertEquals("Nuovo Elemento [Jenkins]",driver.getTitle());
+  	  
     	String jobName="TestAutomation";
    	  	driver.findElement(By.name("name")).sendKeys("TestAutomation");
    	  	driver.findElement(By.className("org_jenkinsci_plugins_workflow_job_WorkflowJob")).click();
