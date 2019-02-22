@@ -54,21 +54,12 @@ public class ExampleTest {
         // driver.navigate().to("http://www.google.com");
 
         Thread.sleep(SLEEP);
-        System.out.println("Login");
-        System.out.println("step 1");
-        System.out.println(driver.getTitle());
         driver.findElement(By.name("j_username")).sendKeys("admin");
     	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
     	driver.findElement(By.name("Submit")).click();
     	
-    	System.out.println("step 2");
-        System.out.println(driver.getTitle());
-        
     	Assert.assertEquals("Dashboard [Jenkins]",driver.getTitle());
-    	System.out.println("Login OK");
-    	System.out.println("step 3");
-        System.out.println(driver.getPageSource());
-   	  	
+    	
         /**************************************/
     	
     	
@@ -84,52 +75,42 @@ public class ExampleTest {
         // driver.navigate().to("http://www.google.com");
 
         Thread.sleep(SLEEP);
-        System.out.println("Login");
-        System.out.println(driver.getTitle());
         driver.findElement(By.name("j_username")).sendKeys("admin");
     	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
     	driver.findElement(By.name("Submit")).click();
 
     	/************ Create New Job **************/
-    	System.out.println("New Item");
-    	System.out.println("step 4");
-        driver.findElement(By.linkText("New Item")).click();
+    	driver.findElement(By.linkText("New Item")).click();
     	Thread.sleep(5000);
-    	System.out.println(driver.getTitle());
-    	System.out.println(driver.getPageSource());
-        Assert.assertEquals("New Item [Jenkins]",driver.getTitle());
+    	Assert.assertEquals("New Item [Jenkins]",driver.getTitle());
   	  	driver.findElement(By.name("name")).sendKeys("TestAutomation");
    	  	driver.findElement(By.className("org_jenkinsci_plugins_workflow_job_WorkflowJob")).click();
    	  	driver.findElement(By.id("ok-button")).click();
-   	  	System.out.println("New Element End");
-        /******************************************/
+   	  	/******************************************/
    	  	
     }
     
     @Test
-    public void Stage3_DeleteElement() throws Exception {
+    public void Stage2_DeleteElement() throws Exception {
     	driver.get("http://13.93.116.170:8080/login");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
         Thread.sleep(SLEEP);
-        System.out.println("Login");
-        System.out.println("step 1");
-        System.out.println(driver.getTitle());
         driver.findElement(By.name("j_username")).sendKeys("admin");
     	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
     	driver.findElement(By.name("Submit")).click();
 
     	/**************** Delete Job ***************/
-   	  	System.out.println("New Element delete");
-   	  	System.out.println(driver.getPageSource());
-
+   	  	
     	String jobName="TestAutomation";
    	  	
    	  	driver.findElement(By.linkText(jobName)).click();
+   	    Thread.sleep(5000);
+   	    System.out.println(driver.getPageSource());
+
    	  	driver.findElement(By.linkText("delete Pipeline")).click();
-   	  	Thread.sleep(5000);
- 	
+   	  	
    	  	driver.switchTo().alert().accept();
    	  	System.out.println("New Element delete End");
      
