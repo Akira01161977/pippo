@@ -80,13 +80,25 @@ public class ExampleTest {
 
     @Test
     public void Stage1_NewElement() throws Exception {
+    	driver.get("http://13.93.116.170:8080/login");
+        // Alternatively the same thing can be done like this
+        // driver.navigate().to("http://www.google.com");
+
+        Thread.sleep(SLEEP);
+        System.out.println("Login");
+        System.out.println("step 1");
+        System.out.println(driver.getTitle());
+        driver.findElement(By.name("j_username")).sendKeys("admin");
+    	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
+    	driver.findElement(By.name("Submit")).click();
+
     	/************ Create New Job **************/
     	System.out.println("New Element");
     	System.out.println("step 4");
         
     	System.out.println(driver.getPageSource());
     	
-    	driver.findElement(By.linkText("New Element")).click();
+    	driver.findElement(By.linkText("New Item")).click();
     	Thread.sleep(5000);
     	System.out.println(driver.getTitle());
         
@@ -103,13 +115,25 @@ public class ExampleTest {
     
     @Test
     public void Stage3_DeleteElement() throws Exception {
-      	/**************** Delete Job ***************/
+    	driver.get("http://13.93.116.170:8080/login");
+        // Alternatively the same thing can be done like this
+        // driver.navigate().to("http://www.google.com");
+
+        Thread.sleep(SLEEP);
+        System.out.println("Login");
+        System.out.println("step 1");
+        System.out.println(driver.getTitle());
+        driver.findElement(By.name("j_username")).sendKeys("admin");
+    	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
+    	driver.findElement(By.name("Submit")).click();
+
+    	/**************** Delete Job ***************/
    	  	System.out.println("New Element delete");
 
     	String jobName="TestAutomation";
    	  	
    	  	driver.findElement(By.linkText(jobName)).click();
-   	  	driver.findElement(By.linkText("Elimina Pipeline")).click();
+   	  	driver.findElement(By.linkText("delete Pipeline")).click();
    	  	Thread.sleep(5000);
  	
    	  	driver.switchTo().alert().accept();
