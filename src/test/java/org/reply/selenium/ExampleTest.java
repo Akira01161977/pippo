@@ -22,7 +22,7 @@ public class ExampleTest {
 
     private final static String SELENIUM_URL = System.getProperty("selenium.url", "http://localhost:4444/wd/hub");
     private final static String SELENIUM_BROWSER = System.getProperty("selenium.browser", "chrome");
-    private final static int SLEEP = Integer.parseInt(System.getProperty("sleep", "1000"));
+    private final static int SLEEP = Integer.parseInt(System.getProperty("sleep", "500"));
 
     protected WebDriver driver;
 
