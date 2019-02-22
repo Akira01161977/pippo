@@ -77,9 +77,7 @@ public class ExampleTest {
     public void Stage1_NewElement() throws Exception {
     	/************ Create New Job **************/
     	System.out.println("New Element");
-    	System.out.println(driver.getTitle());
-    	driver.get("http://13.93.116.170:8080/");
-    	System.out.println(driver.getTitle());
+    	System.out.println(driver.getPageSource());
     	
     	driver.findElement(By.linkText("New Element")).click();
     	Thread.sleep(5000);
