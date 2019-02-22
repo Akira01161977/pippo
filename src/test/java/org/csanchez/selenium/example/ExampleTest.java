@@ -55,15 +55,20 @@ public class ExampleTest {
 
         Thread.sleep(SLEEP);
         System.out.println("Login");
+        System.out.println("step 1");
         System.out.println(driver.getTitle());
         driver.findElement(By.name("j_username")).sendKeys("admin");
     	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
     	driver.findElement(By.name("Submit")).click();
-    	System.out.println(driver.getTitle());
+    	
+    	System.out.println("step 2");
+        System.out.println(driver.getTitle());
         
     	Assert.assertEquals("Dashboard [Jenkins]",driver.getTitle());
     	System.out.println("Login OK");
-        
+    	System.out.println("step 3");
+        System.out.println(driver.getPageSource());
+   	  	
         /**************************************/
     	
     	Thread.sleep(5000);
@@ -77,6 +82,8 @@ public class ExampleTest {
     public void Stage1_NewElement() throws Exception {
     	/************ Create New Job **************/
     	System.out.println("New Element");
+    	System.out.println("step 4");
+        
     	System.out.println(driver.getPageSource());
     	
     	driver.findElement(By.linkText("New Element")).click();
@@ -89,8 +96,7 @@ public class ExampleTest {
    	  	driver.findElement(By.className("org_jenkinsci_plugins_workflow_job_WorkflowJob")).click();
    	  	driver.findElement(By.id("ok-button")).click();
    	  	System.out.println("New Element End");
-     
-   	  	/******************************************/
+        /******************************************/
    	  	Thread.sleep(5000);
  	
     }
