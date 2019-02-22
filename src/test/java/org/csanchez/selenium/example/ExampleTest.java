@@ -42,7 +42,7 @@ public class ExampleTest {
     }
 
     @Test
-    public void test() throws Exception {
+    public void Stage0_Login() throws Exception {
       
     	/************ LOGIN TEST **************/
     	driver.get("http://13.93.116.170:8080/login");
@@ -64,6 +64,13 @@ public class ExampleTest {
     	
     	Thread.sleep(5000);
     	
+    
+   	  	
+   	  	
+    }
+
+    @Test
+    public void Stage1_NewElement() throws Exception {
     	/************ Create New Job **************/
     	System.out.println("New Element");
     	System.out.println(driver.getTitle());
@@ -74,8 +81,7 @@ public class ExampleTest {
         
     	Assert.assertEquals("New Element [Jenkins]",driver.getTitle());
   	  
-    	String jobName="TestAutomation";
-   	  	driver.findElement(By.name("name")).sendKeys("TestAutomation");
+    	driver.findElement(By.name("name")).sendKeys("TestAutomation");
    	  	driver.findElement(By.className("org_jenkinsci_plugins_workflow_job_WorkflowJob")).click();
    	  	driver.findElement(By.id("ok-button")).click();
    	  	System.out.println("New Element End");
@@ -83,9 +89,15 @@ public class ExampleTest {
    	  	/******************************************/
    	  	Thread.sleep(5000);
  	
-   	  	/**************** Delete Job ***************/
+    }
+    
+    @Test
+    public void Stage3_DeleteElement() throws Exception {
+      	/**************** Delete Job ***************/
    	  	System.out.println("New Element delete");
-     
+
+    	String jobName="TestAutomation";
+   	  	
    	  	driver.findElement(By.linkText(jobName)).click();
    	  	driver.findElement(By.linkText("Elimina Pipeline")).click();
    	  	Thread.sleep(5000);
@@ -94,10 +106,9 @@ public class ExampleTest {
    	  	System.out.println("New Element delete End");
      
    	  	/*******************************************/
-   	  	
-   	  	
+   	
     }
-
+    
     @After
     public void tearDown() throws Exception {
         if (driver != null)
