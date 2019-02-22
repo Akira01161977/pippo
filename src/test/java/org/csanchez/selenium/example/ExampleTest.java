@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -21,12 +22,14 @@ public class ExampleTest {
 
     private final static String SELENIUM_URL = System.getProperty("selenium.url", "http://localhost:4444/wd/hub");
     private final static String SELENIUM_BROWSER = System.getProperty("selenium.browser", "chrome");
-    private final static int SLEEP = Integer.parseInt(System.getProperty("sleep", "10000"));
+    private final static int SLEEP = Integer.parseInt(System.getProperty("sleep", "1000"));
 
     protected WebDriver driver;
 
     @Before
     public void setUp() throws Exception {
+    	//System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
+    	//driver = new ChromeDriver();
         DesiredCapabilities capabilities = new DesiredCapabilities(SELENIUM_BROWSER, "", Platform.ANY);
         // Retry connecting
         WebDriverException ex = null;
@@ -41,6 +44,7 @@ public class ExampleTest {
             }
         }
         throw ex;
+    	
     }
 
     
@@ -70,22 +74,29 @@ public class ExampleTest {
 
     @Test
     public void Stage1_NewElement() throws Exception {
+    	/************ LOGIN TEST **************/
     	driver.get("http://13.93.116.170:8080/login");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
-
-        Thread.sleep(SLEEP);
         driver.findElement(By.name("j_username")).sendKeys("admin");
     	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
     	driver.findElement(By.name("Submit")).click();
+    	
+    	Assert.assertEquals("Dashboard [Jenkins]",driver.getTitle());
+    	
+        /**************************************/
 
+    	Thread.sleep(SLEEP);
     	/************ Create New Job **************/
     	driver.findElement(By.linkText("New Item")).click();
-    	Thread.sleep(5000);
     	Assert.assertEquals("New Item [Jenkins]",driver.getTitle());
-  	  	driver.findElement(By.name("name")).sendKeys("TestAutomation");
-   	  	driver.findElement(By.className("org_jenkinsci_plugins_workflow_job_WorkflowJob")).click();
+    	Thread.sleep(SLEEP);
+    	  
+    	driver.findElement(By.name("name")).sendKeys("TestAutomation");
+  	  	driver.findElement(By.className("org_jenkinsci_plugins_workflow_job_WorkflowJob")).click();
+   	  	
    	  	driver.findElement(By.id("ok-button")).click();
+   	 
    	  	/******************************************/
    	  	
     }
@@ -96,24 +107,25 @@ public class ExampleTest {
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
-        Thread.sleep(SLEEP);
         driver.findElement(By.name("j_username")).sendKeys("admin");
     	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
     	driver.findElement(By.name("Submit")).click();
 
     	/**************** Delete Job ***************/
    	  	
-    	String jobName="TestAutomation";
+    	Thread.sleep(SLEEP);
+        String jobName="TestAutomation";
    	  	
    	  	driver.findElement(By.linkText(jobName)).click();
-   	    Thread.sleep(5000);
-   	    
-   	  	driver.findElement(By.linkText("Delete Pipeline")).click();
-   	 System.out.println(driver.getPageSource());
-
-   	  	driver.switchTo().alert().accept();
-   	  	System.out.println("New Element delete End");
+   	  	Thread.sleep(SLEEP);
      
+   	  	driver.findElement(By.linkText("Delete Pipeline")).click();
+   	  	Thread.sleep(SLEEP);
+     
+   	  	driver.switchTo().alert().accept();
+   	  	driver.get("http://13.93.116.170:8080");
+   	  	System.out.println("New Element delete End");
+   	 
    	  	/*******************************************/
    	
     }
