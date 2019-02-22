@@ -55,6 +55,8 @@ public class ExampleTest {
         driver.findElement(By.name("j_username")).sendKeys("admin");
     	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
     	driver.findElement(By.name("Submit")).click();
+    	System.out.println(driver.getTitle());
+        
     	Assert.assertEquals("Dashboard [Jenkins]",driver.getTitle());
     	System.out.println("Login OK");
         
@@ -64,13 +66,13 @@ public class ExampleTest {
     	
     	/************ Create New Job **************/
     	System.out.println("New Element");
-    	System.out.println(driver.getPageSource());
+    	System.out.println(driver.getTitle());
         
     	driver.findElement(By.linkText("New Element")).click();
     	Thread.sleep(5000);
     	System.out.println(driver.getTitle());
         
-    	Assert.assertEquals("Nuovo Elemento [Jenkins]",driver.getTitle());
+    	Assert.assertEquals("New Element [Jenkins]",driver.getTitle());
   	  
     	String jobName="TestAutomation";
    	  	driver.findElement(By.name("name")).sendKeys("TestAutomation");
