@@ -74,12 +74,17 @@ public class ExampleTest {
       	System.out.println("FormAction");
     	
       	driver.findElement(By.id("TestAutoButton")).click();
-      	Thread.sleep(SLEEP);
+      	System.out.println("step 1");
+    	Thread.sleep(SLEEP);
       	driver.findElement(By.name("firstname")).sendKeys("Marco");
+      	System.out.println("step 2");
     	driver.findElement(By.name("lastname")).sendKeys("Giuliani");
+    	System.out.println("step 3");
     	Select dropdown = new Select(driver.findElement(By.id("country")));
     	dropdown.selectByVisibleText("Canada");
+    	System.out.println("step 4");
     	driver.findElement(By.id("subject")).sendKeys("Questo è un esempio");
+    	System.out.println("step 5");
     	Thread.sleep(SLEEP);
     	
       	driver.findElement(By.id("testAutoSubmit")).click();
