@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -22,15 +23,15 @@ public class ExampleTest {
 
     private final static String SELENIUM_URL = System.getProperty("selenium.url", "http://localhost:4444/wd/hub");
     private final static String SELENIUM_BROWSER = System.getProperty("selenium.browser", "chrome");
-    private final static int SLEEP = Integer.parseInt(System.getProperty("sleep", "2000"));
+    private final static int SLEEP = Integer.parseInt(System.getProperty("sleep", "1000"));
 
     protected WebDriver driver;
 
     @Before
     public void setUp() throws Exception {
-    	//System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
-    	//driver = new ChromeDriver();
-    	
+    	System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
+    	driver = new ChromeDriver();
+    	/*
     	DesiredCapabilities capabilities = new DesiredCapabilities(SELENIUM_BROWSER, "", Platform.ANY);
         // Retry connecting
         WebDriverException ex = null;
@@ -45,20 +46,56 @@ public class ExampleTest {
             }
         }
         throw ex;
-    	
+    	*/
     }
 
-    
+  
     
     @Test
+    public void Stage1_Verify_Polling_page() throws Exception {
+    	driver.get("http://52.166.117.33/pocPolling");
+    	System.out.println("ciao");
+    	System.out.println(driver.findElement(By.className("badge-primary")).getText());
+    	Thread.sleep(SLEEP);
+    	Assert.assertEquals("Polling",driver.findElement(By.className("badge-primary")).getText());  
+        }
+    
+    @Test
+    public void Stage2_Verify_WebSocket_page() throws Exception {
+    	driver.get("http://52.166.117.33/");
+    	System.out.println("ciao");
+    	System.out.println(driver.findElement(By.className("badge-primary")).getText());
+    	Thread.sleep(SLEEP);
+    	Assert.assertEquals("Web Socket",driver.findElement(By.className("badge-primary")).getText());  
+    }
+    
+    @Test
+    public void Stage3_Verify_FormAction_page() throws Exception {
+    	driver.get("http://52.166.117.33/");
+      	Thread.sleep(SLEEP);
+      	
+      	driver.findElement(By.id("TestAutoButton")).click();
+      	Thread.sleep(SLEEP);
+      	driver.findElement(By.name("firstname")).sendKeys("Marco");
+    	driver.findElement(By.name("lastname")).sendKeys("Giuliani");
+    	Select dropdown = new Select(driver.findElement(By.id("country")));
+    	dropdown.selectByVisibleText("Canada");
+    	driver.findElement(By.id("subject")).sendKeys("Questo è un esempio");
+      	System.out.println("test");
+    	Thread.sleep(SLEEP);
+    	
+      	driver.findElement(By.id("testAutoSubmit")).click();
+      	
+    	Thread.sleep(SLEEP);
+    	
+    	}
+    
+    /*@Test
     public void Stage0_Login() throws Exception {
       
     	System.out.println("Login Test");
-    	/************ LOGIN TEST **************/
     	driver.get("http://52.174.68.188:8080/login");
-        // Alternatively the same thing can be done like this
-        // driver.navigate().to("http://www.google.com");
-
+  
         Thread.sleep(SLEEP);
         driver.findElement(By.name("j_username")).sendKeys("ElgUsr");
     	driver.findElement(By.name("j_password")).sendKeys("ElgUsr");
@@ -66,14 +103,13 @@ public class ExampleTest {
     	
     	Assert.assertEquals("Dashboard [Jenkins]",driver.getTitle());
     	
-        /********************* Pippo *****************/
     	
     	
     
    	  	
    	  	
     }
-
+*/
    /* @Test
     public void Stage1_NewElement() throws Exception {
     	System.out.println("New Item Test");
