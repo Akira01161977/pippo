@@ -29,9 +29,9 @@ public class ExampleTest {
 
     @Before
     public void setUp() throws Exception {
-    	System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
-    	driver = new ChromeDriver();
-    	/*
+    	//System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
+    	//driver = new ChromeDriver();
+    	
     	DesiredCapabilities capabilities = new DesiredCapabilities(SELENIUM_BROWSER, "", Platform.ANY);
         // Retry connecting
         WebDriverException ex = null;
@@ -46,7 +46,7 @@ public class ExampleTest {
             }
         }
         throw ex;
-    	*/
+    	
     }
 
   
