@@ -74,15 +74,12 @@ public class ExampleTest {
    	  	
     }
 
-    @Test
+   /* @Test
     public void Stage1_NewElement() throws Exception {
     	System.out.println("New Item Test");
     	
-    	/************ LOGIN TEST **************/
     	driver.get("http://52.174.68.188:8080/login");
-        // Alternatively the same thing can be done like this
-        // driver.navigate().to("http://www.google.com");
-
+   
         Thread.sleep(SLEEP);
         driver.findElement(By.name("j_username")).sendKeys("ElgUsr");
     	driver.findElement(By.name("j_password")).sendKeys("ElgUsr");
@@ -90,10 +87,8 @@ public class ExampleTest {
     	
     	Assert.assertEquals("Dashboard [Jenkins]",driver.getTitle());
     	
-        /**************************************/
-
+    
     	Thread.sleep(SLEEP);
-    	/************ Create New Job **************/
     	driver.findElement(By.linkText("New Item")).click();
     	Assert.assertEquals("New Item [Jenkins]",driver.getTitle());
     	Thread.sleep(SLEEP);
@@ -103,11 +98,10 @@ public class ExampleTest {
    	  	
    	  	driver.findElement(By.id("ok-button")).click();
    	 
-   	  	/******************************************/
    	  	
-    }
+    } */
     
-    @Test
+    /*@Test
     public void Stage2_DeleteElement() throws Exception {
     	System.out.println("Delete Item Test");
     	
@@ -120,8 +114,7 @@ public class ExampleTest {
     	driver.findElement(By.name("j_password")).sendKeys("ElgUsr");
     	driver.findElement(By.name("Submit")).click();
 
-    	/**************** Delete Job ***************/
-   	  	
+    	
     	Thread.sleep(SLEEP);
         String jobName="TestAutomation";
    	  	
@@ -134,9 +127,8 @@ public class ExampleTest {
    	  	driver.switchTo().alert().accept();
    	  	System.out.println("New Element delete End");
    	 
-   	  	/*******************************************/
-   	
-    }
+   	  	
+    }*/
     
     @After
     public void tearDown() throws Exception {
