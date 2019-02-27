@@ -54,13 +54,13 @@ public class ExampleTest {
     public void Stage0_Login() throws Exception {
       
     	/************ LOGIN TEST **************/
-    	driver.get("http://13.93.116.170:8080/login");
+    	driver.get("http://52.174.68.188:8080/login");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
         Thread.sleep(SLEEP);
-        driver.findElement(By.name("j_username")).sendKeys("admin");
-    	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
+        driver.findElement(By.name("j_username")).sendKeys("ElgUsr");
+    	driver.findElement(By.name("j_password")).sendKeys("ElgUsr");
     	driver.findElement(By.name("Submit")).click();
     	
     	Assert.assertEquals("Dashboard [Jenkins]",driver.getTitle());
@@ -76,11 +76,13 @@ public class ExampleTest {
     @Test
     public void Stage1_NewElement() throws Exception {
     	/************ LOGIN TEST **************/
-    	driver.get("http://13.93.116.170:8080/login");
+    	driver.get("http://52.174.68.188:8080/login");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
-        driver.findElement(By.name("j_username")).sendKeys("admin");
-    	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
+
+        Thread.sleep(SLEEP);
+        driver.findElement(By.name("j_username")).sendKeys("ElgUsr");
+    	driver.findElement(By.name("j_password")).sendKeys("ElgUsr");
     	driver.findElement(By.name("Submit")).click();
     	
     	Assert.assertEquals("Dashboard [Jenkins]",driver.getTitle());
@@ -104,12 +106,13 @@ public class ExampleTest {
     
     @Test
     public void Stage2_DeleteElement() throws Exception {
-    	driver.get("http://13.93.116.170:8080/login");
+    	driver.get("http://52.174.68.188:8080/login");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
-        driver.findElement(By.name("j_username")).sendKeys("admin");
-    	driver.findElement(By.name("j_password")).sendKeys("7UuCMjJYGZ");
+        Thread.sleep(SLEEP);
+        driver.findElement(By.name("j_username")).sendKeys("ElgUsr");
+    	driver.findElement(By.name("j_password")).sendKeys("ElgUsr");
     	driver.findElement(By.name("Submit")).click();
 
     	/**************** Delete Job ***************/
