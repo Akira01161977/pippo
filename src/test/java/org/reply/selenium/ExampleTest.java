@@ -132,7 +132,6 @@ public class ExampleTest {
    	  	Thread.sleep(SLEEP);
      
    	  	driver.switchTo().alert().accept();
-   	  	driver.get("http://13.93.116.170:8080");
    	  	System.out.println("New Element delete End");
    	 
    	  	/*******************************************/
