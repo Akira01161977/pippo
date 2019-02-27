@@ -53,6 +53,7 @@ public class ExampleTest {
     @Test
     public void Stage0_Login() throws Exception {
       
+    	System.out.println("Login Test");
     	/************ LOGIN TEST **************/
     	driver.get("http://52.174.68.188:8080/login");
         // Alternatively the same thing can be done like this
@@ -75,6 +76,8 @@ public class ExampleTest {
 
     @Test
     public void Stage1_NewElement() throws Exception {
+    	System.out.println("New Item Test");
+    	
     	/************ LOGIN TEST **************/
     	driver.get("http://52.174.68.188:8080/login");
         // Alternatively the same thing can be done like this
@@ -106,6 +109,8 @@ public class ExampleTest {
     
     @Test
     public void Stage2_DeleteElement() throws Exception {
+    	System.out.println("Delete Item Test");
+    	
     	driver.get("http://52.174.68.188:8080/login");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
