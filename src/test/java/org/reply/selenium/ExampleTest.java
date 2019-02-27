@@ -53,7 +53,7 @@ public class ExampleTest {
     
     @Test
     public void Stage1_Verify_Polling_page() throws Exception {
-    	driver.get("http://52.166.117.33/pocPolling");
+    	driver.get("http://52.174.26.145/pocPolling");
     	System.out.println(driver.findElement(By.className("badge-primary")).getText());
     	Thread.sleep(SLEEP);
     	Assert.assertEquals("Polling",driver.findElement(By.className("badge-primary")).getText());  
@@ -61,7 +61,7 @@ public class ExampleTest {
     
     @Test
     public void Stage2_Verify_WebSocket_page() throws Exception {
-    	driver.get("http://52.166.117.33/");
+    	driver.get("http://52.174.26.145/");
     	System.out.println(driver.findElement(By.className("badge-primary")).getText());
     	Thread.sleep(SLEEP);
     	Assert.assertEquals("Web Socket",driver.findElement(By.className("badge-primary")).getText());  
@@ -69,7 +69,7 @@ public class ExampleTest {
     
     @Test
     public void Stage3_Verify_FormAction_page() throws Exception {
-    	driver.get("http://52.166.117.33/");
+    	driver.get("http://52.174.26.145/");
       	Thread.sleep(SLEEP);
       	System.out.println("FormAction");
     	
