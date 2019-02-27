@@ -54,7 +54,6 @@ public class ExampleTest {
     @Test
     public void Stage1_Verify_Polling_page() throws Exception {
     	driver.get("http://52.166.117.33/pocPolling");
-    	System.out.println("ciao");
     	System.out.println(driver.findElement(By.className("badge-primary")).getText());
     	Thread.sleep(SLEEP);
     	Assert.assertEquals("Polling",driver.findElement(By.className("badge-primary")).getText());  
@@ -63,7 +62,6 @@ public class ExampleTest {
     @Test
     public void Stage2_Verify_WebSocket_page() throws Exception {
     	driver.get("http://52.166.117.33/");
-    	System.out.println("ciao");
     	System.out.println(driver.findElement(By.className("badge-primary")).getText());
     	Thread.sleep(SLEEP);
     	Assert.assertEquals("Web Socket",driver.findElement(By.className("badge-primary")).getText());  
@@ -73,7 +71,8 @@ public class ExampleTest {
     public void Stage3_Verify_FormAction_page() throws Exception {
     	driver.get("http://52.166.117.33/");
       	Thread.sleep(SLEEP);
-      	
+      	System.out.println("FormAction");
+    	
       	driver.findElement(By.id("TestAutoButton")).click();
       	Thread.sleep(SLEEP);
       	driver.findElement(By.name("firstname")).sendKeys("Marco");
@@ -81,7 +80,6 @@ public class ExampleTest {
     	Select dropdown = new Select(driver.findElement(By.id("country")));
     	dropdown.selectByVisibleText("Canada");
     	driver.findElement(By.id("subject")).sendKeys("Questo è un esempio");
-      	System.out.println("test");
     	Thread.sleep(SLEEP);
     	
       	driver.findElement(By.id("testAutoSubmit")).click();
