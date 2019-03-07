@@ -23,7 +23,7 @@ public class ExampleTest {
 
     private final static String SELENIUM_URL = System.getProperty("selenium.url", "http://localhost:4444/wd/hub");
     private final static String SELENIUM_BROWSER = System.getProperty("selenium.browser", "chrome");
-    private final static int SLEEP = Integer.parseInt(System.getProperty("sleep", "1000"));
+    private final static int SLEEP = Integer.parseInt(System.getProperty("sleep", "3000"));
 
     protected WebDriver driver;
 
@@ -53,7 +53,7 @@ public class ExampleTest {
     
     @Test
     public void Stage1_Verify_Polling_page() throws Exception {
-    	driver.get("http://52.174.26.145/pocPolling");
+    	driver.get("http://52.166.107.201/pocPolling");
     	System.out.println(driver.findElement(By.className("badge-primary")).getText());
     	Thread.sleep(SLEEP);
     	Assert.assertEquals("Polling",driver.findElement(By.className("badge-primary")).getText());  
@@ -61,7 +61,7 @@ public class ExampleTest {
     
     @Test
     public void Stage2_Verify_WebSocket_page() throws Exception {
-    	driver.get("http://52.174.26.145/");
+    	driver.get("http://52.166.107.201/");
     	System.out.println(driver.findElement(By.className("badge-primary")).getText());
     	Thread.sleep(SLEEP);
     	Assert.assertEquals("Web Socket",driver.findElement(By.className("badge-primary")).getText());  
@@ -69,10 +69,10 @@ public class ExampleTest {
     
     @Test
     public void Stage3_Verify_FormAction_page() throws Exception {
-    	//driver.get("http://52.174.26.145/");
-      	//Thread.sleep(SLEEP);
+    	driver.get("http://52.166.107.201/");
+      	Thread.sleep(SLEEP);
       	System.out.println("FormAction");
-    	/*
+    	
       	driver.findElement(By.id("TestAutoButton")).click();
       	System.out.println("step 1");
     	Thread.sleep(SLEEP);
@@ -90,7 +90,7 @@ public class ExampleTest {
       	driver.findElement(By.id("testAutoSubmit")).click();
       	
     	Thread.sleep(SLEEP);
-    	*/
+    	
     	}
     
     /*@Test
