@@ -72,7 +72,7 @@ public class ExampleTest {
     	driver.get("http://52.166.107.201/");
       	Thread.sleep(SLEEP);
       	System.out.println("FormAction");
-    	
+    	/*
       	driver.findElement(By.id("TestAutoButton")).click();
       	System.out.println("step 1");
     	Thread.sleep(SLEEP);
@@ -90,7 +90,7 @@ public class ExampleTest {
       	driver.findElement(By.id("testAutoSubmit")).click();
       	
     	Thread.sleep(SLEEP);
-    	
+    	*/
     	}
     
     /*@Test
